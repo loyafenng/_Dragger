@@ -1,0 +1,359 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>~</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+     <link rel="stylesheet" type="text/css" href="../css/base.css"> 
+    <style type="text/css">
+        
+        .content{width: 960px;margin: 0 auto;height: 5999px;background: #ddd;}
+        .btn{font-size: 13px;padding: 30px 0;}
+        .btn a{background: #fff;border-radius: 5px;padding: 3px 10px; border:1px solid #f60;color: #f60;float: left;margin-right: 10px;text-decoration: none;}
+        .pops{
+            background: #fff;
+            color: #333;
+            width: 200px;
+            height: 80px;
+            border-radius: 10px;
+        }
+        .pops1{line-height: 80px;text-align:center;font-size: 16px;font-weight: 500;}
+        .popsb{border-radius: 0;border-top: none}
+        /*反馈建议*/
+        .suggest_box{width:565px;background:#fff;height:345px;    margin-top: -17px;}
+        .suggest_box h2{float:left;font-size:16px;}
+        .suggest_box .close_ico{float:right;height:11px;width:11px;background:url(http://js.40017.cn/cn/public/module/mNotice/0.2/pic.png) 0 -16px repeat scroll;}
+        .suggest_box textarea{width:488px;height:155px;border:1px solid #ddd;margin:0 auto;display:block;padding:5px;overflow-y:hidden;}
+        .suggest_box .helptip{color:#999;margin-top:5px;display:block;font-size:14px;margin-left:-5px;}
+        .suggest_box .helptip a{color:#0088cc;}
+        .suggest_box > div{width:500px;margin:0 auto;}
+        .top-info{margin-top:20px;}
+        #submitSug{float:right;width:130px;height:34px;text-align:center;line-height:34px;color:#fff;background:#ff7800;border-radius:3px;font-size:16px;margin-top:20px;}
+        .suggest_box .user_content{position:relative;margin-top:20px;}
+        .suggest_box .user_content span{position:absolute;right:0;bottom:0;color:#cccccc;}
+        #submitAdv{width:130px;height:34px;text-align:center;line-height:34px;color:#fff;background:#ff7800;border-radius:3px;font-size:16px;margin-top:20px;font-weight:normal;display:block;}
+        .s_tip_content .tip_word span{background:url(http://img1.40017.cn/cn/c/c/common_aspect/right.png) no-repeat;display:inline-block;width:38px;height:38px;}
+        .tip_word{padding:50px 0 10px 70px;height:50px;}
+        .tip_word p{position:relative;top:-13px;left:15px;display:inline-block;font-size:16px;}
+        .s_content p a{text-decoration:none;cursor:pointer;color:#64a10a;background-position:0 -195px;width:74px;height:27px;display:inline-block;line-height:23px;font-size:14px;text-align:center;margin-left:3px;}
+        .s_content p a:hover{text-decoration:none;cursor:pointer;color:white;background-position:0 -36px;}
+        .tip_word a{margin-left:70px;}
+
+
+        body .without-bg,body .rel-pop{
+            background: none;
+            border: none;
+            box-shadow: none;
+        }
+        body .rel-pop{
+            background: #fff;
+            line-height: 80px;
+            text-align: center;
+        }
+
+        .tips-pop{
+            background: #fff;
+        }
+        
+        .delete-info .message i,.update-success .message i,.subscribe-success .message i{
+            background: url(img/icon.png) no-repeat;
+            width: 38px;
+            height: 38px;
+            position: absolute;
+            top: 50%;
+            margin-top: -19px;
+            left: 0;
+        }
+        .delete-info{
+             padding: 0 104px 0 84px;
+             width: 247px; 
+        }
+        .update-success{
+            width: 279px;
+            padding: 0 79px 0 77px;
+        }
+        .subscribe-success{
+            width: 135px;
+            padding: 0 115px;
+        }
+
+        .delete-info,.update-success,.subscribe-success{
+            padding-bottom: 45px;
+            display: none;
+        }
+        .update-success .pop-btn{
+            text-align: left;
+            padding-left: 50px;
+        }
+        .message{
+            font-size: 16px;
+            position: relative; 
+            font-family: 'Microsoft YaHei';
+            line-height: 20px;
+            padding-left: 50px;
+            min-height: 38px;
+            margin-bottom: 20px;
+        }
+        .subscribe-success .message{margin-bottom: 0;}
+        .subscribe-success .message{
+            line-height: 38px;
+        }
+        .warning .message i{
+            background-position: -19px -137px;
+        }
+        .success .message i{
+            background-position:-67px -137px;
+        }
+        .pop-btn{
+            display: inline-block;
+            text-align: center;
+            width: 100%;
+        }
+        .pop-btn a{
+            display: inline-block;
+            height: 28px;
+            overflow: hidden;
+            font-size: 14px;
+            line-height: 28px;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        .pop-btn a span{
+            background:url(img/icon.png) no-repeat scroll right 0px transparent;
+            display: inline-block;
+        }
+        .pop-btn a span{padding-right: 25px;vertical-align: top;}
+        .pop-btn a i{
+            width: 25px;
+            height: 28px;
+            display: inline-block;
+            background: url(img/icon.png) no-repeat  -57px 0 transparent;
+        }
+        .cancel{
+            margin-left: 8px;
+        }
+        .pop-btn a.cancel span{background-position: right -41px;}
+        .pop-btn a.cancel i{background-position: -57px -41px;}
+        .ok,.ok:hover{
+            color: #fff;
+        }
+        .cancel,.cancel:hover{
+            color: #333;
+        }
+
+        .update-success .pop-btn a,.update-success .pop-btn a,.update-success .pop-btn a i{
+            height: 34px;
+            line-height: 34px;
+            font-size: 16px;
+        }
+        .update-success .pop-btn a span{
+            background-position: right -89px;
+            padding-right: 40px;
+        }
+        .update-success .pop-btn a i{
+            background-position: -7px -89px;
+            width: 40px;
+            height: 34px;
+        }
+        .select-rel{
+            top: 200px;
+            position: relative;
+            left: 200px;
+        }
+    </style>
+    <link rel="stylesheet" type="text/css" href="http://js.40017.cn/cn/min/??/cn/public/jquery/dialog/0.0.2/dialog.css">
+      <script type="text/javascript" src="http://js.40017.cn/cn/min/???/cn/public/jquery/jquery.min.js,/cn/public/jquery/util/0.0.1/util.js"></script>
+    <script type="text/javascript" src="http://js.40017.cn/cn/min/??/cn/public/jquery/dialog/0.0.2/dialog.js" ></script>
+    
+</head>
+<body>
+    <div class="content">
+       
+        <div class="btn clearfix">
+            
+            <a href="javascript:;" class="show-pop">弹出</a>
+            <a href="javascript:;" class="show-pop2">弹出页面元素</a>
+            <a href="javascript:;" class="show-pop3">弹出反馈建议</a>
+            <a href="javascript:;" class="show-pop5">相对弹框</a>
+            <a href="javascript:;" class="show-delete">删除</a>
+            <a href="javascript:;" class="show-update">修改</a>
+            <a href="javascript:;" class="show-sc">订阅</a>
+        </div>
+        <select class="select-rel">
+            <option>1</option>
+        </select>
+        <div class="pops pops1 popsb">
+        <a>first block</a>
+        </div>
+        <div class="pops pops2">
+            first block
+        </div>
+        <div class="btn clearfix" style="margin-top:800px;">
+            <a href="javascript:;" class="show-pop4">弹出a</a>
+        </div>
+
+
+
+        <div class="suggest_box" style="display:none;">
+            <div>
+                <h2>请留下你对同程的意见或建议，感谢！</h2>
+                <div class="clearfix"></div>
+                <p><span class="clearfix helptip">（如果有个人问题需要解决，请使用<a target="_blank" href="http://www.ly.com/newhelp/MyAdvice.aspx">人工申诉</a>或拨打4007-777-777）</span></p>
+                <div class="user_content">
+                    <textarea name="advice_content" maxlength="200" id="advice_content"></textarea>
+                    <span>还可输入<em id="wordCount">200</em>个字！</span>
+                </div>
+                <p><a id="submitSug" class="" href="javascript:void(0)">提 交</a></p>
+            </div>
+        </div>
+
+        <div class="delete-info warning">
+            <div class="message">
+                <i></i>
+                <p>删除后“陈阳”的旅客信息将被移除，确定删除？</p>
+            </div>
+            <div class="pop-btn">
+                <a href="javascript:;" class="ok"><i></i><span>确定</span></a>
+                <a href="javascript:;" class="cancel"><i></i><span>取消</span></a>
+            </div>
+        </div>
+        <div class="update-success success">
+            <div class="message">
+                <i></i>
+                <p>修改成功，请重新登录！</p>
+                <p>从此登录名为您新绑定的手机号</p>
+            </div>
+            <div class="pop-btn">
+                <a href="javascript:;" class="ok"><i></i><span>确定</span></a>
+            </div>
+        </div>
+        <div class="subscribe-success success">
+            <div class="message">
+                <i></i>
+                <p>订阅成功</p>
+            </div>
+        </div>
+
+    </div>
+
+    <script type="text/javascript">
+        var popShow,
+            popShow2;
+        $(function(){
+            popShow = $.dialog({
+                        content: '<span style="display:inline-block;height: 35px;padding: 0 25px;background: #BE4C00; font: 16px/35px \'Microsoft YaHei\';color: #fff;">会员活动</span>' +
+                                '<p style="position:relative;margin: -5px 0 0 54px; width:313px;height:157px;background:url(http://img1.40017.cn/cn/new_ui/huiyuan/upgrade/sign_in_lead.png) scroll no-repeat 0 0 transparent"></p>',
+                        pageWidth: 960,
+                        fixed:false,
+                        className:'without-bg',
+                        left: 134,
+                        // isModal:false,
+                        top: 115,
+                        bgClose: true,
+                        zIndex:[101,100],
+                        // fixed: true,
+                        click: function() {
+                            this.close();
+                        }
+                    });
+            popShow2 = $.dialog({
+                        content: $('.pops1'),
+                        title:"提示",
+                        // left: 500,
+                        // top: 500,
+                        dragable:true,
+                        bgClose: true,
+                        zIndex:[1001,1000],
+                        click: function(a,b) {
+                            console.log(b)
+                        },
+                        closeFn:function(){
+                            // return false
+                        },
+                        btns:{
+                            '取消':function(a){
+                                console.log('~')
+                            },
+                            '可以':function(a){
+                                console.log("~~")
+                            }
+                        }
+                    });
+            
+            popShow3 = $.dialog({
+                        content: $('.suggest_box'),
+                        fixed:false,
+                        bgClose: true,
+                        title:' ',
+                        click: function(a,elem) {
+                            if($(elem).hasClass('close_ico')){
+                                this.close();
+                            }
+                        }
+                    });
+            popShow4 = $.dialog({
+                        content: '<div class="pops pops1">second block</div>',
+                        fixed:false,
+                        isModal:false,
+                        dragable:true,
+                        bgClose: true,
+                        zIndex:[19,10],
+                        click: function() {
+                            this.close();
+                        }
+                    });
+            popShow5 = $.dialog({
+                        content: '<div class="pops pops2">five block</div>',
+                        fixed:false,
+                        // left: 500,
+                        // top: 500,
+                        className:'rel-pop',
+                        relative:'select',
+                        left:10,
+                        isModal:false,
+                        zIndex:[19,10],
+                        click: function() {
+                            this.close();
+                        }
+                    });
+            popShow6 = $.dialog({
+                        content: '',
+                        title:' ',
+                        bgClose:true,
+                        className:'tips-pop',
+                        click: function() {
+                            this.close();
+                        }
+                    });
+            $('.btn .show-pop').on('click',function(e){
+                popShow.show()
+            });
+            $('.btn .show-pop2').on('click',function(){
+                popShow2.show()
+            });
+            $('.btn .show-pop3').on('click',function(){
+                popShow3.show()
+            });
+            $('.btn .show-pop4').on('click',function(){
+                popShow4.show()
+            });
+            $('.btn .show-pop5').on('click',function(){
+                popShow5.show()
+            });
+
+            $('.show-delete').on('click',function(){
+                popShow6.show($('.delete-info'))
+            })
+            $('.show-update').on('click',function(){
+                popShow6.show($('.update-success'))
+            })
+            $('.show-sc').on('click',function(){
+                popShow6.show($('.subscribe-success'))
+            })
+        })
+
+
+    </script>
+</body>
+</html>

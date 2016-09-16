@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>myscroll</title>
+		<link rel="stylesheet" href="http://js.40017.cn/cn/min/??/cn/public/jquery/mScrollpane/0.0.1/mScrollpane.css" />
+		<style>
+		    #ins_container{width:300px; height:300px; background:#CCCCCC;}
+		    #ins_scroller{left:300px; width:20px; height:300px; }
+		    #ins_scroll_up{width:20px; height:20px;background:#999999;}
+		    #ins_scroll_bar{top:20px;}
+		    #ins_scroll_down{width:20px; height:20px; background:#999999; }
+		</style>
+		<script type="text/javascript" src="js/jquery-1.8.3.js" ></script>
+		<script type="text/javascript" src="http://js.40017.cn/cn/min/??/cn/public/jquery/mScrollpane/0.0.1/mScrollpane.js" ></script>
+	</head>
+	<body>
+		<div style="position:relative;">
+    <div  id="ins_container">
+        <div   id="ins_shower"  >
+            <div>一一一一一</div>
+            <div>二二二二二</div>
+            <div>三三三三三</div>
+            <div>四四四四四</div>
+            <div>五五五五五</div>
+            <div>六六六六六</div>
+            <div>七七七七七</div>
+            <div>八八八八八</div>
+            <div>九九九九九</div>
+            <div>十十十十十</div>
+            <div>一一一一一</div>
+            <div>二二二二二</div>
+            <div>三三三三三</div>
+            <div>四四四四四</div>
+            <div>五五五五五</div>
+            <div>六六六六六</div>
+            <div>七七七七七</div>
+            <div>八八八八八</div>
+            <div>九九九九九</div>
+            <div>十十十十十</div>
+            <div>doubile</div>
+            <div>十十十十asdasda十</div>
+            <div>十2131233十十十十</div>
+        </div>
+    </div>
+    <div   id="ins_scroller">
+        <div  id="ins_scroll_up"></div>
+        <div  id="ins_scroll_bar"></div>
+        <div  id="ins_scroll_down"></div>
+    </div>
+</div>
+<script type="text/javascript">
+$(function(){
+    $.mScrollpane({
+        wheelNum: 10,
+        container: "#ins_container",
+        shower: "#ins_shower",
+        scroller: "#ins_scroller",
+        scroll_up: "#ins_scroll_up",
+        scroll_down: "#ins_scroll_down",
+        scroll_bar: "#ins_scroll_bar",defaultStyle:true
+        // ,scrolly:30
+    });
+})
+ 
+</script>
+	</body>
+</html>

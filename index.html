@@ -1,0 +1,169 @@
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="renderer" content="webkit">
+
+    <title>后台主题UI框架 - 主页</title>
+    <link href="css/font-awesome.min.css" rel="stylesheet" />
+    <link href="css/font_awesome.css" rel="stylesheet" />
+    <link href="css/layout.css" rel="stylesheet" />
+
+    <script src="js/jquery.js"></script>
+    <script src="js/require.js"></script>
+    <script src="js/common.js"></script>
+    <script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="main" src="js/main.js"></script>
+    <script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="menu" src="js/menu.js"></script>
+    <script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="login" src="js/login.js"></script>
+    <script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="search" src="js/search.js"></script>
+    <script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="menu" src="../jqmodule/menu/0.1.0/menu.js"></script>
+    <script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="module" src="js/module.js"></script>
+    <script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="slide/0.1.0/slide" src="../jqmodule/slide/0.1.0/slide.js"></script>
+    <script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="css" src="../jqmodule/css.js"></script>
+    <script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="tooltip/0.3.0/tooltip" src="../jqmodule/tooltip/0.3.0/tooltip.js"></script>
+    <script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="jsondb/0.1.0/jsondb" src="../jqmodule/jsondb/0.1.0/jsondb.js"></script>
+    <script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="base/0.1.0/base" src="../jqmodule/base/0.1.0/base.js"></script>
+    <link type="text/css" rel="stylesheet" href="../jqmodule/helper/0.1.0/helper.css"><link type="text/css" rel="stylesheet" href="../jqmodule/search/0.2.0/search.css">
+    <link type="text/css" rel="stylesheet" href="../jqmodule/menu/0.1.0/menu.css"><link type="text/css" rel="stylesheet" href="../jqmodule/slide/0.1.0/slide.css">
+    <script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="base/0.1.0/module" src="js/module.js"></script>
+    <link type="text/css" rel="stylesheet" href="../jqmodule/tooltip/0.3.0/tooltip.css">
+    <script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="jsextend/0.1.0/jsextend" src="../jqmodule/jsextend/0.1.0/jsextend.js"></script>
+    <script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="dot" src="../jqmodule/dot.js"></script>
+    <script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="popup/0.3.0/popup" src="../jqmodule/popup/0.3.0/popup.js"></script>
+    <link type="text/css" rel="stylesheet" href="../jqmodule/popup/0.3.0/popup.css">
+
+</head>
+
+<body class="skin-blue">
+    <div id="wrapper" class="wrapper">
+    </div>
+    <script>
+        var username = '游客';
+        var deptname = '大度假';
+
+        require.config({
+            //baseUrl: "http://10.14.86.134:8003/jqmodule"
+            baseUrl: "js/"
+        });
+
+        //框架
+        require(['layout', 'helper'], function (layout, Helper) {
+            //初始化;
+            layout.init({
+                wrapper: "#wrapper",
+                homePage: "/Home/Index",
+                skin: "blue",
+                name: "backend", //系统名称
+                // sideWidth:'325',
+                //logo: "http://10.14.86.134:8003/jqmodule/layout/0.2.0/img/logo.png",
+                logoName: "大度假后台系统",
+                // collapsed:true,
+                logoIcon: "/jqmodule/layout/0.2.0/img/logo_icon.png",
+                search: {
+                    data: function(k, o, res) {
+                        $.post("/api/admin/getModulelist", {
+                            "info": k
+                        }, function(data) {
+                            if (data.code == 1) {
+                                res(data.data);
+                            }
+                        });
+                    },
+                    onItemClick: function(itemdata) {
+                        //点击项
+                        console.log(1);
+                    },
+                    onItemSelect: function(itemdata) {
+                        //选中项(上下按钮)
+                        console.log(2);
+                    }
+                },
+                onMenuClick: function (e, menuData) {
+                    //console.log(menuData);//菜单点击事件,返回true则继续原操作,返回false停止原操作
+                    return true;
+                }
+                // showHeader:false
+                //collapsed:true     //初始化折叠显示          
+            });
+            //登录数据初始化
+            layout.initLogin({
+                headPortrait: "../assets/images/profile_small.jpg", //头像
+                userName: username, //用户名
+                deptName: deptname, //部门名称      
+                loginout: '/Home/loginout'
+                //position:'right'
+            });
+
+            //菜单初始化
+            $.post('/api/admin/getmenulist', {}, function (data) {
+                if (data.code == 1) {
+                    var _data = data.data;
+                    var menudata = initMenu(_data);
+                    layout.initMenu(menudata);
+                }
+            })
+           
+            
+
+            //热门菜单初始化
+            layout.initHotMenu([{
+                text: "移动端组件",
+                url: "/m/index"
+            }, {
+                text: "bootstrap官网",
+                url: "http://www.bootcss.com"
+ }, {
+                text: "组件使用帮助文档",
+                url: "/assets/Demo.rar"
+            }]);
+
+            var helper = new Helper();
+            //工具项初始化
+            layout.initTools([{
+                alt: "建",
+                //src: "/jqmodule/layout/0.2.0/img/logo_xiaoming.png",
+                type: 'icon',
+                res: function() {
+                    helper.openSuggest("");
+                }
+            }]);
+
+            var initMenu = function (menu,level) {
+                var i = 0;
+                var l = 0;
+                level = level ? level : 0;
+                var menudata = new Array();
+
+                do {
+                    var v = menu[i];                 
+                    var temp = {
+                        menuid: v.menuid,
+                        url: v.url,
+                        title: v.title,
+                        target: v.target,
+                        refresh: (v.refresh == 1),
+                        menuico:v.menuicon
+                    };
+                    if (level < v.treelevel) {
+                        menudata[menudata.length - 1].childs = initMenu(menu, v.treelevel)
+                    }
+                    else if (level > v.treelevel) {
+                        break
+                    }
+                    else {
+                        menudata.push(temp);
+                        menu.splice(i, 1);
+                    }
+
+                } while (menu.length > 0);              
+                return menudata;
+            }
+        });
+       
+    </script>
+</body>
+
+</html>

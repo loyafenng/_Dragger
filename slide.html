@@ -1,0 +1,244 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>幻灯 demo</title>
+    <link rel="stylesheet" type="text/css" href="css/slider.css">
+    <!-- <script type="text/javascript" src="../../src/fish.fwd.js?v=2013080601"></script>
+    <script type="text/javascript" src="../../src/module/mSlider/mSlider.js"></script>
+    <script type="text/javascript" src="../../src/module/anim/anim.js"></script>
+    <script type="text/javascript" src="http://js.40017.cn/cn/min/??/cn/public/fish.1.4.7.js,/cn/public/fc.1.1.7.js?v=2015021101"></script> -->
+    <script type="text/javascript" src="js/jquery-1.8.3.js"></script>
+    <script type="text/javascript" src="js/jquery.cookie.js"></script>
+    <script type="text/javascript" src="js/slider.js"></script>
+    <style type="text/css">
+        body{-webkit-user-select: none;-webkit-user-drag: none;}
+        .mSlider{position:relative;width:720px;height:283px;/*overflow:hidden;*/height: 500px;}
+        .mSlider_con{width:720px;height:280px;overflow:hidden;}
+        .mSlider_con .slider_ul{margin:0px;padding:0px;list-style-type:none;width:6000px; z-index:0;height: 283px;/*width: 720px;*/}
+        .mSlider_con .slider_ul li{float:left;overflow:hidden;margin:0px;padding:0px;width:720px;}
+        #mSlider2 .mSlider_con .slider_ul,#mSlider3 .mSlider_con .slider_ul{width: 720px;}
+        #mSlider4 .mSlider_con .slider_ul li{width: 360px;}
+        #mSlider5 .mSlider_con .slider_ul,#mSlider6 .mSlider_con .slider_ul{width: 720px;}
+        #mSlider5 .mSlider_con .slider_ul li,#mSlider6 .mSlider_con .slider_ul li{width:720px;position:absolute;top:0;left:0;}
+        /*.mSlider_con li{}*/
+        .mSlider_con img{height:280px;border:0px;}
+        /* 箭头 */
+        .btn-prev,.btn-next{
+            cursor: pointer;
+            position: absolute;
+            top: 30px;
+            background: #fff;
+            padding: 6px 15px;
+            color: #ff7800;
+            border-radius: 4px;
+            border:1px solid #ddd;
+            font-size: 14px;
+        }
+        .btn-prev{left:5px;}    
+        .btn-next{right:5px;}
+        .clearfix:after{content:'.';display:block;clear:both;line-height:0;height:0;visibility:hidden}
+        .btns .disabled{background: #ccc;color: #fff;border-color: #ccc;}
+        
+        .btns{position: relative;}
+    </style>
+</head>
+<body>
+<h1> 幻灯 demo <span class="index1"></span></h1>
+<div id="mSlider" class="mSlider">
+    <div class="mSlider_con">
+        <ul class="clearfix slider_ul"><li><a href="#"title="丽江"small="http://img.17u.cn/ly/cn/img/admin/ziyouxing/2012/2/17/201202170442467710.jpg"><img src="http://img.17u.cn/ly/cn/img/admin/ziyouxing/2012/2/17/201202170442467710.jpg"></a></li><li><a href="#"title="醉温泉"small="http://img.17u.cn/ly/cn/img/admin/ziyouxing/2012/2/17/201202170441511802.jpg"><img src="http://img.17u.cn/ly/cn/img/admin/ziyouxing/2012/2/17/201202170441511802.jpg"></a></li><li><a href="#"title="3"small="http://img.17u.cn/ly/cn/img/admin/ziyouxing/2012/2/17/201202170521582561.jpg"><img src="http://img.17u.cn/ly/cn/img/admin/ziyouxing/2012/2/17/201202170521582561.jpg"></a></li><li><a href="#"title="4"small="http://img.17u.cn/ly/cn/img/admin/ziyouxing/2012/3/1/201203010620193875.jpg"><img src="http://img.17u.cn/ly/cn/img/admin/ziyouxing/2012/3/1/201203010620193875.jpg"></a></li><li><a href="#"title="5"small="http://img.17u.cn/ly/cn/img/admin/ziyouxing/2012/2/17/201202170520361437.jpg"><img src="http://img.17u.cn/ly/cn/img/admin/ziyouxing/2012/2/17/201202170520361437.jpg"></a></li><li><a href="#"title="1"small="http://img.17u.cn/ly/cn/img/admin/ziyouxing/2012/2/17/201202170442467710.jpg"><img src="http://img.17u.cn/ly/cn/img/admin/ziyouxing/2012/2/17/201202170442467710.jpg"></a></li><li><a href="#"title="2"small="http://img.17u.cn/ly/cn/img/admin/ziyouxing/2012/2/17/201202170441511802.jpg"><img src="http://img.17u.cn/ly/cn/img/admin/ziyouxing/2012/2/17/201202170441511802.jpg"></a></li><li><a href="#"title="3"small="http://img.17u.cn/ly/cn/img/admin/ziyouxing/2012/2/17/201202170521582561.jpg"><img src="http://img.17u.cn/ly/cn/img/admin/ziyouxing/2012/2/17/201202170521582561.jpg"></a></li><li><a href="#"title="4"small="http://img.17u.cn/ly/cn/img/admin/ziyouxing/2012/3/1/201203010620193875.jpg"><img src="http://img.17u.cn/ly/cn/img/admin/ziyouxing/2012/3/1/201203010620193875.jpg"></a></li><li><a href="#"title="5"small="http://img.17u.cn/ly/cn/img/admin/ziyouxing/2012/2/17/201202170520361437.jpg"><img src="http://img.17u.cn/ly/cn/img/admin/ziyouxing/2012/2/17/201202170520361437.jpg"></a></li></ul>
+    </div>
+    <div class="btns">
+        <span id="id-previous" class="btn-prev">上一个</span> 
+        <span id="id-next" class="btn-next">下一个</span>
+    </div>
+</div>
+<h1> 幻灯 demo <span class="index2"></span></h1>
+<div id="mSlider2" class="mSlider">
+    <div class="mSlider_con">
+        <ul class="clearfix slider_ul"><li><a href="#"title="丽江"small="http://img.17u.cn/ly/cn/img/admin/ziyouxing/2012/2/17/201202170442467710.jpg"><img src="http://img.17u.cn/ly/cn/img/admin/ziyouxing/2012/2/17/201202170442467710.jpg"></a></li><li><a href="#"title="醉温泉"small="http://img.17u.cn/ly/cn/img/admin/ziyouxing/2012/2/17/201202170441511802.jpg"><img src="http://img.17u.cn/ly/cn/img/admin/ziyouxing/2012/2/17/201202170441511802.jpg"></a></li><li><a href="#"title="3"small="http://img.17u.cn/ly/cn/img/admin/ziyouxing/2012/2/17/201202170521582561.jpg"><img src="http://img.17u.cn/ly/cn/img/admin/ziyouxing/2012/2/17/201202170521582561.jpg"></a></li><li><a href="#"title="4"small="http://img.17u.cn/ly/cn/img/admin/ziyouxing/2012/3/1/201203010620193875.jpg"><img src="http://img.17u.cn/ly/cn/img/admin/ziyouxing/2012/3/1/201203010620193875.jpg"></a></li><li><a href="#"title="5"small="http://img.17u.cn/ly/cn/img/admin/ziyouxing/2012/2/17/201202170520361437.jpg"><img src="http://img.17u.cn/ly/cn/img/admin/ziyouxing/2012/2/17/201202170520361437.jpg"></a></li><li><a href="#"title="1"small="http://img.17u.cn/ly/cn/img/admin/ziyouxing/2012/2/17/201202170442467710.jpg"><img src="http://img.17u.cn/ly/cn/img/admin/ziyouxing/2012/2/17/201202170442467710.jpg"></a></li><li><a href="#"title="2"small="http://img.17u.cn/ly/cn/img/admin/ziyouxing/2012/2/17/201202170441511802.jpg"><img src="http://img.17u.cn/ly/cn/img/admin/ziyouxing/2012/2/17/201202170441511802.jpg"></a></li><li><a href="#"title="3"small="http://img.17u.cn/ly/cn/img/admin/ziyouxing/2012/2/17/201202170521582561.jpg"><img src="http://img.17u.cn/ly/cn/img/admin/ziyouxing/2012/2/17/201202170521582561.jpg"></a></li><li><a href="#"title="4"small="http://img.17u.cn/ly/cn/img/admin/ziyouxing/2012/3/1/201203010620193875.jpg"><img src="http://img.17u.cn/ly/cn/img/admin/ziyouxing/2012/3/1/201203010620193875.jpg"></a></li><li><a href="#"title="5"small="http://img.17u.cn/ly/cn/img/admin/ziyouxing/2012/2/17/201202170520361437.jpg"><img src="http://img.17u.cn/ly/cn/img/admin/ziyouxing/2012/2/17/201202170520361437.jpg"></a></li></ul>
+    </div>
+    <div class="btns">
+        <span  class="btn-prev bt2">上一个</span> 
+        <span  class="btn-next nbt2">下一个</span>
+    </div>
+</div>
+<h1> 幻灯 demo <span class="index3"></span></h1>
+<div id="mSlider3" class="mSlider">
+    <div class="mSlider_con">
+        <ul class="clearfix slider_ul"><li><a href="#"title="丽江"small="http://img.17u.cn/ly/cn/img/admin/ziyouxing/2012/2/17/201202170442467710.jpg"><img src="http://img.17u.cn/ly/cn/img/admin/ziyouxing/2012/2/17/201202170442467710.jpg"></a></li><li><a href="#"title="醉温泉"small="http://img.17u.cn/ly/cn/img/admin/ziyouxing/2012/2/17/201202170441511802.jpg"><img src="http://img.17u.cn/ly/cn/img/admin/ziyouxing/2012/2/17/201202170441511802.jpg"></a></li><li><a href="#"title="3"small="http://img.17u.cn/ly/cn/img/admin/ziyouxing/2012/2/17/201202170521582561.jpg"><img src="http://img.17u.cn/ly/cn/img/admin/ziyouxing/2012/2/17/201202170521582561.jpg"></a></li><li><a href="#"title="4"small="http://img.17u.cn/ly/cn/img/admin/ziyouxing/2012/3/1/201203010620193875.jpg"><img src="http://img.17u.cn/ly/cn/img/admin/ziyouxing/2012/3/1/201203010620193875.jpg"></a></li><li><a href="#"title="5"small="http://img.17u.cn/ly/cn/img/admin/ziyouxing/2012/2/17/201202170520361437.jpg"><img src="http://img.17u.cn/ly/cn/img/admin/ziyouxing/2012/2/17/201202170520361437.jpg"></a></li><li><a href="#"title="1"small="http://img.17u.cn/ly/cn/img/admin/ziyouxing/2012/2/17/201202170442467710.jpg"><img src="http://img.17u.cn/ly/cn/img/admin/ziyouxing/2012/2/17/201202170442467710.jpg"></a></li><li><a href="#"title="2"small="http://img.17u.cn/ly/cn/img/admin/ziyouxing/2012/2/17/201202170441511802.jpg"><img src="http://img.17u.cn/ly/cn/img/admin/ziyouxing/2012/2/17/201202170441511802.jpg"></a></li><li><a href="#"title="3"small="http://img.17u.cn/ly/cn/img/admin/ziyouxing/2012/2/17/201202170521582561.jpg"><img src="http://img.17u.cn/ly/cn/img/admin/ziyouxing/2012/2/17/201202170521582561.jpg"></a></li><li><a href="#"title="4"small="http://img.17u.cn/ly/cn/img/admin/ziyouxing/2012/3/1/201203010620193875.jpg"><img src="http://img.17u.cn/ly/cn/img/admin/ziyouxing/2012/3/1/201203010620193875.jpg"></a></li><li><a href="#"title="5"small="http://img.17u.cn/ly/cn/img/admin/ziyouxing/2012/2/17/201202170520361437.jpg"><img src="http://img.17u.cn/ly/cn/img/admin/ziyouxing/2012/2/17/201202170520361437.jpg"></a></li></ul>
+    </div>
+    <div class="btns">
+        <span  class="btn-prev bt3">上一个</span> 
+        <span  class="btn-next nbt3">下一个</span>
+    </div>
+</div>
+<h1> 幻灯 demo <span class="index4"></span></h1>
+<div id="mSlider4" class="mSlider">
+    <div class="mSlider_con">
+        <ul class="clearfix slider_ul"><li><a href="#"title="丽江"small="http://img.17u.cn/ly/cn/img/admin/ziyouxing/2012/2/17/201202170442467710.jpg"><img src="http://img.17u.cn/ly/cn/img/admin/ziyouxing/2012/2/17/201202170442467710.jpg"></a></li><li><a href="#"title="醉温泉"small="http://img.17u.cn/ly/cn/img/admin/ziyouxing/2012/2/17/201202170441511802.jpg"><img src="http://img.17u.cn/ly/cn/img/admin/ziyouxing/2012/2/17/201202170441511802.jpg"></a></li><li><a href="#"title="3"small="http://img.17u.cn/ly/cn/img/admin/ziyouxing/2012/2/17/201202170521582561.jpg"><img src="http://img.17u.cn/ly/cn/img/admin/ziyouxing/2012/2/17/201202170521582561.jpg"></a></li><li><a href="#"title="4"small="http://img.17u.cn/ly/cn/img/admin/ziyouxing/2012/3/1/201203010620193875.jpg"><img src="http://img.17u.cn/ly/cn/img/admin/ziyouxing/2012/3/1/201203010620193875.jpg"></a></li><li><a href="#"title="5"small="http://img.17u.cn/ly/cn/img/admin/ziyouxing/2012/2/17/201202170520361437.jpg"><img src="http://img.17u.cn/ly/cn/img/admin/ziyouxing/2012/2/17/201202170520361437.jpg"></a></li><li><a href="#"title="1"small="http://img.17u.cn/ly/cn/img/admin/ziyouxing/2012/2/17/201202170442467710.jpg"><img src="http://img.17u.cn/ly/cn/img/admin/ziyouxing/2012/2/17/201202170442467710.jpg"></a></li><li><a href="#"title="2"small="http://img.17u.cn/ly/cn/img/admin/ziyouxing/2012/2/17/201202170441511802.jpg"><img src="http://img.17u.cn/ly/cn/img/admin/ziyouxing/2012/2/17/201202170441511802.jpg"></a></li><li><a href="#"title="3"small="http://img.17u.cn/ly/cn/img/admin/ziyouxing/2012/2/17/201202170521582561.jpg"><img src="http://img.17u.cn/ly/cn/img/admin/ziyouxing/2012/2/17/201202170521582561.jpg"></a></li><li><a href="#"title="4"small="http://img.17u.cn/ly/cn/img/admin/ziyouxing/2012/3/1/201203010620193875.jpg"><img src="http://img.17u.cn/ly/cn/img/admin/ziyouxing/2012/3/1/201203010620193875.jpg"></a></li><li><a href="#"title="5"small="http://img.17u.cn/ly/cn/img/admin/ziyouxing/2012/2/17/201202170520361437.jpg"><img src="http://img.17u.cn/ly/cn/img/admin/ziyouxing/2012/2/17/201202170520361437.jpg"></a></li></ul>
+    </div>
+    <div class="btns">
+        <span  class="btn-prev bt4">上一个</span> 
+        <span  class="btn-next nbt4">下一个</span>
+    </div>
+</div>
+<h1> 幻灯 demo <span class="index5"></span></h1>
+<div id="mSlider5" class="mSlider">
+    <div class="mSlider_con">
+        <ul class="clearfix slider_ul"><li><a href="#"title="丽江"small="http://img.17u.cn/ly/cn/img/admin/ziyouxing/2012/2/17/201202170442467710.jpg"><img src="http://img.17u.cn/ly/cn/img/admin/ziyouxing/2012/2/17/201202170442467710.jpg"></a></li><li><a href="#"title="醉温泉"small="http://img.17u.cn/ly/cn/img/admin/ziyouxing/2012/2/17/201202170441511802.jpg"><img src="http://img.17u.cn/ly/cn/img/admin/ziyouxing/2012/2/17/201202170441511802.jpg"></a></li><li><a href="#"title="3"small="http://img.17u.cn/ly/cn/img/admin/ziyouxing/2012/2/17/201202170521582561.jpg"><img src="http://img.17u.cn/ly/cn/img/admin/ziyouxing/2012/2/17/201202170521582561.jpg"></a></li><li><a href="#"title="4"small="http://img.17u.cn/ly/cn/img/admin/ziyouxing/2012/3/1/201203010620193875.jpg"><img src="http://img.17u.cn/ly/cn/img/admin/ziyouxing/2012/3/1/201203010620193875.jpg"></a></li><li><a href="#"title="5"small="http://img.17u.cn/ly/cn/img/admin/ziyouxing/2012/2/17/201202170520361437.jpg"><img src="http://img.17u.cn/ly/cn/img/admin/ziyouxing/2012/2/17/201202170520361437.jpg"></a></li><li><a href="#"title="1"small="http://img.17u.cn/ly/cn/img/admin/ziyouxing/2012/2/17/201202170442467710.jpg"><img src="http://img.17u.cn/ly/cn/img/admin/ziyouxing/2012/2/17/201202170442467710.jpg"></a></li><li><a href="#"title="2"small="http://img.17u.cn/ly/cn/img/admin/ziyouxing/2012/2/17/201202170441511802.jpg"><img src="http://img.17u.cn/ly/cn/img/admin/ziyouxing/2012/2/17/201202170441511802.jpg"></a></li><li><a href="#"title="3"small="http://img.17u.cn/ly/cn/img/admin/ziyouxing/2012/2/17/201202170521582561.jpg"><img src="http://img.17u.cn/ly/cn/img/admin/ziyouxing/2012/2/17/201202170521582561.jpg"></a></li><li><a href="#"title="4"small="http://img.17u.cn/ly/cn/img/admin/ziyouxing/2012/3/1/201203010620193875.jpg"><img src="http://img.17u.cn/ly/cn/img/admin/ziyouxing/2012/3/1/201203010620193875.jpg"></a></li><li><a href="#"title="5"small="http://img.17u.cn/ly/cn/img/admin/ziyouxing/2012/2/17/201202170520361437.jpg"><img src="http://img.17u.cn/ly/cn/img/admin/ziyouxing/2012/2/17/201202170520361437.jpg"></a></li></ul>
+    </div>
+    <div class="btns">
+        <span class="btn-prev bt5">上一个</span> 
+        <span class="btn-next nbt5">下一个</span>
+    </div>
+</div>
+<h1> 幻灯 demo <span class="index6"></span></h1>
+<div id="mSlider6" class="mSlider">
+    <div class="mSlider_con">
+        <ul class="clearfix slider_ul"><li><a href="#"title="丽江"small="http://img.17u.cn/ly/cn/img/admin/ziyouxing/2012/2/17/201202170442467710.jpg"><img src="http://img.17u.cn/ly/cn/img/admin/ziyouxing/2012/2/17/201202170442467710.jpg"></a></li><li><a href="#"title="醉温泉"small="http://img.17u.cn/ly/cn/img/admin/ziyouxing/2012/2/17/201202170441511802.jpg"><img src="http://img.17u.cn/ly/cn/img/admin/ziyouxing/2012/2/17/201202170441511802.jpg"></a></li><li><a href="#"title="3"small="http://img.17u.cn/ly/cn/img/admin/ziyouxing/2012/2/17/201202170521582561.jpg"><img src="http://img.17u.cn/ly/cn/img/admin/ziyouxing/2012/2/17/201202170521582561.jpg"></a></li><li><a href="#"title="4"small="http://img.17u.cn/ly/cn/img/admin/ziyouxing/2012/3/1/201203010620193875.jpg"><img src="http://img.17u.cn/ly/cn/img/admin/ziyouxing/2012/3/1/201203010620193875.jpg"></a></li><li><a href="#"title="5"small="http://img.17u.cn/ly/cn/img/admin/ziyouxing/2012/2/17/201202170520361437.jpg"><img src="http://img.17u.cn/ly/cn/img/admin/ziyouxing/2012/2/17/201202170520361437.jpg"></a></li><li><a href="#"title="1"small="http://img.17u.cn/ly/cn/img/admin/ziyouxing/2012/2/17/201202170442467710.jpg"><img src="http://img.17u.cn/ly/cn/img/admin/ziyouxing/2012/2/17/201202170442467710.jpg"></a></li><li><a href="#"title="2"small="http://img.17u.cn/ly/cn/img/admin/ziyouxing/2012/2/17/201202170441511802.jpg"><img src="http://img.17u.cn/ly/cn/img/admin/ziyouxing/2012/2/17/201202170441511802.jpg"></a></li><li><a href="#"title="3"small="http://img.17u.cn/ly/cn/img/admin/ziyouxing/2012/2/17/201202170521582561.jpg"><img src="http://img.17u.cn/ly/cn/img/admin/ziyouxing/2012/2/17/201202170521582561.jpg"></a></li><li><a href="#"title="4"small="http://img.17u.cn/ly/cn/img/admin/ziyouxing/2012/3/1/201203010620193875.jpg"><img src="http://img.17u.cn/ly/cn/img/admin/ziyouxing/2012/3/1/201203010620193875.jpg"></a></li><li><a href="#"title="5"small="http://img.17u.cn/ly/cn/img/admin/ziyouxing/2012/2/17/201202170520361437.jpg"><img src="http://img.17u.cn/ly/cn/img/admin/ziyouxing/2012/2/17/201202170520361437.jpg"></a></li></ul>
+    </div>
+    <div class="btns">
+        <span  class="btn-prev bt6">上一个</span> 
+        <span  class="btn-next nbt6">下一个</span>
+    </div>
+</div>
+<script type="text/javascript">
+    var slider1;
+    $(function () {
+        slider1 = $("#mSlider .mSlider_con").slider({
+            showNav: "bottom",
+            circle:true,
+            moveTime: 3500,
+            arrows: true,
+            prevBtn: "#id-previous",
+            nextBtn: "#id-next",
+            prevBtnDisabled: 'disabled',
+            nextBtnDisabled: 'disabled',
+            nextFn:function(){
+                $('.index1').html(slider1.index)
+            },
+            prevFn:function(){
+                $('.index1').html(slider1.index)
+            }
+        }, function (obj) {
+            // slider = obj;
+        });
+    });
+    $(function () {
+        var slider = $("#mSlider2 .mSlider_con").slider({
+            // aniType: "fade",
+            showNav: "orange",
+            circle:true,
+            direction:'scrollTop',
+            moveTime: 3500,
+            arrows: true,
+            prevBtn: ".bt2",
+            nextBtn: ".nbt2",
+            prevBtnDisabled: 'disabled',
+            nextBtnDisabled: 'disabled',
+            nextFn:function(){
+                $('.index2').html(slider.index)
+            },
+            prevFn:function(){
+                $('.index2').html(slider.index)
+            }
+        }, function (obj) {
+            // slider = obj;
+        });
+    });
+    $(function () {
+        var slider = $("#mSlider3 .mSlider_con").slider({
+            // aniType: "fade",
+            showNav: "orange",
+            scrollNum:2,
+            direction:'scrollTop',
+            moveTime: 3500,
+            arrows: true,
+            prevBtn: ".bt3",
+            nextBtn: ".nbt3",
+            prevBtnDisabled: 'disabled',
+            nextBtnDisabled: 'disabled',
+            nextFn:function(){
+                $('.index3').html(slider.index)
+            },
+            prevFn:function(){
+                $('.index3').html(slider.index)
+            }
+        }, function (obj) {
+            // slider = obj;
+        });
+    });
+    $(function () {
+        var slider = $("#mSlider4 .mSlider_con").slider({
+            showNav: "circle",
+            circle:true,
+            scrollNum:2,
+            moveTime: 2500,
+            arrows: true,
+            prevBtn: ".bt4",
+            nextBtn: ".nbt4",
+            prevBtnDisabled: 'disabled',
+            nextBtnDisabled: 'disabled',
+            nextFn:function(){
+                $('.index4').html(slider.index)
+            },
+            prevFn:function(){
+                $('.index4').html(slider.index)
+            }
+        }, function (obj) {
+            // slider = obj;
+        });
+    });
+    $(function () {
+        var slider = $("#mSlider5 .mSlider_con").slider({
+            aniType: "fade",
+            showNav: "circle",
+            circle:true,
+            moveTime: 2500,
+            arrows: true,
+            fadeTime:500,
+            prevBtn: ".bt5",
+            nextBtn: ".nbt5",
+            prevBtnDisabled: 'disabled',
+            nextBtnDisabled: 'disabled',
+            nextFn:function(){
+                $('.index5').html(slider.index)
+            },
+            prevFn:function(){
+                $('.index5').html(slider.index)
+            }
+        }, function (obj) {
+            // slider = obj;
+        });
+    });
+    $(function () {
+        var slider = $("#mSlider6 .mSlider_con").slider({
+            aniType: "fade",
+            showNav: "circle",
+            circle:true,
+            scrollNum:2,
+            moveTime: 2500,
+            arrows: true,
+            fadeTime:500,
+            prevBtn: ".bt6",
+            nextBtn: ".nbt6",
+            prevBtnDisabled: 'disabled',
+            nextBtnDisabled: 'disabled',
+            nextFn:function(){
+                $('.index6').html(slider.index)
+            },
+            prevFn:function(){
+                $('.index6').html(slider.index)
+            }
+        }, function (obj) {
+            // slider = obj;
+        });
+    });
+
+
+</script>
+</body>
+</html>

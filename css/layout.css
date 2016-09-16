@@ -1,0 +1,764 @@
+html,
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  font-size: 12px;
+  font-family: 'Microsoft YaHei';
+  color: #666666;
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+a {
+  text-decoration: none;
+  color: #999999;
+}
+.none {
+  display: none;
+}
+.wrapper {
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden;
+}
+.wrapper .left-box {
+  width: 230px;
+  height: 100%;
+  background-color: #203756;
+  position: fixed;
+  z-index: 100;
+  top: 0;
+  left: 0;
+}
+.wrapper .left-box .logo {
+  width: 100%;
+  height: 60px;
+  background-color: #10a3ff;
+  display: block;
+  position: relative;
+}
+.wrapper .left-box .logo .default-logo {
+  background-image: url('img/logo.png');
+  width: 175px;
+  height: 21px;
+  position: absolute;
+  margin: auto;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-size: cover;
+  display: block;
+}
+.wrapper .left-box .logo .logo-img {
+  position: absolute;
+  margin: auto;
+  max-width: 100%;
+  max-height: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+.wrapper .left-box .logo .logo-group {
+  width: 100%;
+  height: 100%;
+  padding: 12px 15px;
+  display: block;
+  margin: auto;
+  vertical-align: middle;
+  line-height: 30px;
+}
+.wrapper .left-box .logo .logo-group .logo-name {
+  color: #fff;
+  font-size: 20px;
+  font-weight: bold;
+  letter-spacing: 2px;
+  line-height: 30px;
+  margin-left: 5px;
+  display: inline-block;
+  vertical-align: middle;
+}
+.wrapper .left-box .logo .logo-group .logo-icon {
+  width: 30px;
+  height: auto;
+  display: inline-block;
+  vertical-align: middle;
+  line-height: 30px;
+}
+.wrapper .left-box .user-box {
+  width: 100%;
+  height: 100px;
+  display: block;
+  position: relative;
+  color: #d0e6f4;
+  line-height: 15px;
+  font-size: 12px;
+  overflow: hidden;
+}
+.wrapper .left-box .user-box .default-img {
+  background-image: url('img/profile_small.jpg');
+  width: 66px;
+  height: 66px;
+  border-radius: 33px;
+  position: absolute;
+  top: 18px;
+  left: 18px;
+  background-size: cover;
+  display: block;
+}
+.wrapper .left-box .user-box .headimg {
+  width: 66px;
+  height: 66px;
+  border-radius: 33px;
+  position: absolute;
+  top: 18px;
+  left: 18px;
+}
+.wrapper .left-box .user-box .lb_deptname {
+  position: absolute;
+  top: 30px;
+  left: 95px;
+  width: auto;
+  height: auto;
+  font-weight: bolder;
+  white-space: nowrap;
+  display: block;
+}
+.wrapper .left-box .user-box .lb_username {
+  position: absolute;
+  top: 56px;
+  left: 95px;
+  width: auto;
+  height: auto;
+}
+.wrapper .left-box .user-box .split {
+  width: auto;
+  padding: 0 5px;
+  display: inline-block;
+}
+.wrapper .left-box .user-box .lb_exit {
+  width: auto;
+  display: inline-block;
+  color: #d0e6f4;
+}
+.wrapper .left-box .menu-box {
+  width: 100%;
+  height: calc(100% - 160px);
+  overflow-x: visible;
+  overflow-y: auto;
+  -ms-scrollbar-arrow-color: #203756;
+  scrollbar-arrow-color: #203756;
+  /*三角箭头的颜色*/
+  -ms-scrollbar-face-color: #203756;
+  scrollbar-face-color: #203756;
+  /*立体滚动条的颜色（包括箭头部分的背景色）*/
+  -ms-scrollbar-3dlight-color: #203756;
+  scrollbar-3dlight-color: #203756;
+  /*立体滚动条亮边的颜色*/
+  -ms-scrollbar-highlight-color: #325789;
+  scrollbar-highlight-color: #325789;
+  /*滚动条的高亮颜色（左阴影？）*/
+  -ms-scrollbar-shadow-color: #325789;
+  scrollbar-shadow-color: #325789;
+  /*立体滚动条阴影的颜色*/
+  -ms-scrollbar-darkshadow-color: #325789;
+  scrollbar-darkshadow-color: #325789;
+  /*立体滚动条外阴影的颜色*/
+  -ms-scrollbar-track-color: #203756;
+  scrollbar-track-color: #203756;
+  /*立体滚动条背景颜色*/
+  -ms-scrollbar-base-color: #203756;
+  scrollbar-base-color: #203756;
+  /*滚动条的基色*/
+}
+.wrapper .left-box .menu-box::-scrollbar {
+  width: 10px;
+}
+.wrapper .left-box .menu-box::-webkit-scrollbar {
+  width: 10px;
+}
+.wrapper .left-box .menu-box::-webkit-scrollbar-track {
+  background-color: #203756;
+}
+.wrapper .left-box .menu-box::-webkit-scrollbar-thumb {
+  background-color: #325789;
+}
+.wrapper .left-box .menu-box::-webkit-scrollbar-thumb:hover {
+  background-color: #325789;
+}
+.wrapper .left-box .menu-box::-webkit-scrollbar-thumb:active {
+  background-color: #325789;
+}
+.wrapper .left-box .menu-box ul > li > a {
+  color: #9ea6b9;
+  font-weight: 600;
+  padding: 14px 20px 14px 15px;
+  display: block;
+  white-space: nowrap;
+}
+.wrapper .left-box .menu-box ul > li > a:hover {
+  background-color: #10a3ff;
+  color: #fff;
+  text-decoration: none;
+}
+.wrapper .left-box .menu-box ul > li > a:focus {
+  color: #fff;
+  text-decoration: none;
+}
+.wrapper .left-box .menu-box ul > li > a > .menu-collapse {
+  float: right;
+}
+.wrapper .left-box .menu-box ul > li.active {
+  background-color: #1a304c;
+}
+.wrapper .left-box .menu-box ul > li.active > a {
+  color: #fff;
+}
+.wrapper .left-box .menu-box ul > li.active > a > .menu-collapse:before {
+  content: "\f0de";
+}
+.wrapper .left-box .menu-box ul > li.active > ul {
+  display: block;
+}
+.wrapper .left-box .menu-box ul > li > ul {
+  display: none;
+}
+.wrapper .left-box .menu-box .nav-second-level > li > a {
+  padding: 7px 15px 7px 10px;
+  padding-left: 30px;
+}
+.wrapper .left-box .menu-box .nav-second-level > li.active > a {
+  color: #10a3ff;
+}
+.wrapper .left-box .menu-box .nav-second-level > li.active > a:hover {
+  color: #fff;
+}
+.wrapper .left-box .menu-box .nav-second-level > li.active > a:focus {
+  color: #fff;
+}
+.wrapper .left-box .menu-box .nav-third-level > li > a {
+  padding: 7px 15px 7px 10px;
+  padding-left: 42px;
+}
+.wrapper .left-box .menu-box .nav-third-level > li.active > a {
+  color: #10a3ff;
+}
+.wrapper .left-box .menu-box .nav-third-level > li.active > a:hover {
+  color: #fff;
+}
+.wrapper .left-box .menu-box .nav-third-level > li.active > a:focus {
+  /*color: #fff;*/
+}
+.wrapper .split-bar {
+  width: 10px;
+  height: 100%;
+  display: block;
+  position: fixed;
+  z-index: 101;
+  top: 0;
+  left: 215px;
+  cursor: col-resize;
+}
+.wrapper .split-bar.draging {
+  width: 100%;
+  background-color: #10a3ff;
+  filter: alpha(opacity=20);
+  -moz-opacity: 0.2;
+  -khtml-opacity: 0.2;
+  opacity: 0.2;
+  left: 0;
+}
+.wrapper .main-box {
+  padding: 0 15px;
+  position: inherit;
+  margin: 0 0 0 230px;
+  height: 100%;
+}
+.wrapper .main-box .head-box {
+  height: 60px;
+  margin-right: -15px;
+  margin-left: -15px;
+  position: relative;
+}
+.wrapper .main-box .head-box .left-collapse {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 60px;
+  border-right: 1px solid #dcdcdc;
+  height: 100%;
+  display: inline-block;
+}
+.wrapper .main-box .head-box .left-collapse i {
+  position: absolute;
+  margin: auto;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 20px;
+  height: 20px;
+  line-height: 20px;
+  font-size: 24px;
+  cursor: pointer;
+}
+.wrapper .main-box .head-box .search-bar {
+  display: inline-block;
+  width: 300px;
+  height: 100%;
+  vertical-align: top;
+  position: absolute;
+  left: 80px;
+  top: 0;
+}
+.wrapper .main-box .head-box .search-bar input {
+  height: 35px;
+  width: 100%;
+  border: 0;
+  background-color: #eeeeee;
+  margin-top: 12px;
+  padding-left: 45px;
+  outline: none !important;
+}
+.wrapper .main-box .head-box .search-bar i {
+  position: absolute;
+  top: 22px;
+  left: 20px;
+}
+.wrapper .main-box .head-box .fun-box {
+  height: 100%;
+  width: 100%;
+  padding-left: 400px;
+  display: block;
+  overflow: hidden;
+}
+.wrapper .main-box .head-box .fun-box .hotlink-box {
+  float: right;
+  height: 100%;
+  width: auto;
+}
+.wrapper .main-box .head-box .fun-box .hotlink-box .item {
+  display: inline-block;
+  height: 59px;
+  padding: 22px 10px;
+  line-height: 15px;
+}
+.wrapper .main-box .head-box .fun-box .tools-box {
+  float: right;
+  height: 100%;
+  width: auto;
+}
+.wrapper .main-box .head-box .fun-box .tools-box .item {
+  display: inline-block;
+  height: 59px;
+  padding: 12px;
+  line-height: 15px;
+  cursor: pointer;
+}
+.wrapper .main-box .head-box .fun-box .login {
+  cursor: pointer;
+}
+.wrapper .main-box .head-box .fun-box .login > .default-img {
+  height: 36px;
+  width: 36px;
+  margin: 12px 20px 12px 0px;
+  position: static;
+  cursor: pointer;
+}
+.wrapper .main-box .head-box .fun-box .login .login-panel .default-img {
+  width: 55px;
+  height: 55px;
+  border-radius: 50%;
+  position: absolute;
+  top: 8px;
+  left: 18px;
+}
+.wrapper .main-box .head-box .fun-box .tools-box .icon {
+  display: inline-block;
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  color: #fff;
+  background-color: #10a3ff;
+  font-size: 20px;
+  font-weight: bold;
+  font-style: normal;
+  text-align: center;
+  line-height: 35px;
+  margin: 10px 10px auto auto;
+  cursor: pointer;
+}
+.wrapper .main-box .menu-box {
+  height: 40px;
+  margin-right: -16px;
+  margin-left: -15px;
+  border-top: 1px solid #dcdcdc;
+  border-bottom: 1px solid #dcdcdc;
+  position: relative;
+}
+.wrapper .main-box .menu-box .left-collapse {
+  position: absolute;
+  width: 30px;
+  border-right: 1px solid #dcdcdc;
+  height: 100%;
+  display: none;
+  top: 0;
+  left: 0;
+  z-index: 2;
+}
+.wrapper .main-box .menu-box .left-collapse i {
+  position: absolute;
+  margin: auto;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 14px;
+  height: 14px;
+  line-height: 14px;
+  font-size: 16px;
+  cursor: pointer;
+}
+.wrapper .main-box .menu-box .item {
+  height: 100%;
+  display: block;
+  vertical-align: top;
+  float: left;
+  position: relative;
+  background-color: #fff;
+}
+.wrapper .main-box .menu-box .item > i {
+  position: absolute;
+  margin: auto;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 15px;
+  height: 20px;
+  text-align: center;
+  line-height: 20px;
+  cursor: pointer;
+}
+.wrapper .main-box .menu-box .backward {
+  width: 30px;
+  border-right: 1px solid #dcdcdc;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 2;
+}
+.wrapper .main-box .menu-box .forward {
+  width: 30px;
+  float: right;
+  border-left: 1px solid #dcdcdc;
+  position: absolute;
+  right: 90px;
+  top: 0;
+  z-index: 2;
+}
+.wrapper .main-box .menu-box .closemenu {
+  width: 90px;
+  float: right;
+  border-left: 1px solid #dcdcdc;
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 2;
+  text-align: center;
+  line-height: 38px;
+  cursor: pointer;
+}
+.wrapper .main-box .menu-box .tabs-skin {
+  padding-left: 30px;
+  padding-right: 120px;
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+}
+.wrapper .main-box .menu-box .tabs-skin .tabs-box {
+  border: 0;
+  white-space: nowrap;
+  width: 10000px;
+  height: 100%;
+  float: left;
+  display: block;
+  margin: 0;
+}
+.wrapper .main-box .menu-box .tabs-skin .tabs-box span {
+  width: auto;
+  text-align: center;
+  display: block;
+  margin: 0;
+  height: 100%;
+  float: left;
+  *float: left;
+  *clear: right;
+}
+.wrapper .main-box .menu-box .tabs-skin .tabs-box span a {
+  border: 0;
+  border-right: 1px solid #dcdcdc;
+  padding: 9px 15px 9px 15px;
+  margin-right: 0;
+  border-radius: 0;
+  margin-bottom: 0;
+  display: block;
+  text-decoration: none;
+  height: 100%;
+}
+.wrapper .main-box .menu-box .tabs-skin .tabs-box span a i {
+  margin-left: 5px;
+  cursor: pointer;
+}
+.wrapper .main-box .menu-box .tabs-skin .tabs-box span a i:hover {
+  color: #ff5534;
+  text-decoration: none;
+}
+.wrapper .main-box .menu-box .tabs-skin .tabs-box span a:hover,
+.wrapper .main-box .menu-box .tabs-skin .tabs-box span a:fouse {
+  text-decoration: none;
+}
+.wrapper .main-box .menu-box .tabs-skin .tabs-box span.active a {
+  color: #fff;
+  border: 0;
+  border-radius: 0;
+  background-color: #10a3ff;
+}
+.wrapper .main-box .menu-box .tabs-skin .tab-content {
+  border: 1px solid #dcdcdc;
+  border-top: none;
+}
+.wrapper .main-box .menu-box .login {
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 99;
+  border-left: 1px solid #dcdcdc;
+  cursor: pointer;
+}
+.wrapper .main-box .menu-box .login > img {
+  height: 38px;
+  padding: 4px 20px 4px 12px;
+}
+.wrapper .main-box .menu-box .login > .default-img {
+  height: 30px;
+  width: 30px;
+  margin: 4px 20px 4px 12px;
+  position: static;
+  cursor: pointer;
+}
+.wrapper .main-box .menu-box .login .login-panel .default-img {
+  width: 55px;
+  height: 55px;
+  border-radius: 50%;
+  position: absolute;
+  top: 8px;
+  left: 18px;
+}
+.wrapper .main-box .menu-box.login-pic .forward {
+  right: 153px;
+}
+.wrapper .main-box .menu-box.login-pic .closemenu {
+  right: 63px;
+}
+.wrapper .main-box .content-box {
+  margin-right: -15px;
+  margin-left: -15px;
+  height: calc(100% - 100px);
+  overflow: hidden;
+}
+.wrapper .main-box .content-box > iframe {
+  width: 100%;
+  height: 100%;
+  display: none;
+}
+.wrapper .main-box .content-box > iframe.active {
+  display: block;
+}
+.wrapper .main-box .login {
+  float: right;
+  height: 100%;
+  width: auto;
+}
+.wrapper .main-box .login > img {
+  display: inline-block;
+  height: 59px;
+  border-radius: 50%;
+  padding: 12px 20px 12px 12px;
+  line-height: 15px;
+  cursor: pointer;
+}
+.wrapper .main-box .login .icon-sort-down {
+  position: absolute;
+  top: 40%;
+  right: 5px;
+}
+.wrapper .main-box .login .icon-sort-up {
+  position: absolute;
+  top: 45%;
+  right: 5px;
+}
+.wrapper .main-box .login .login-panel {
+  position: absolute;
+  z-index: 99;
+  border: 1px solid #dcdcdc;
+  width: 210px;
+  height: 85px;
+  right: 0px;
+  bottom: -85px;
+  background: #fff;
+}
+.wrapper .main-box .default-img {
+  background-image: url('img/profile_small.jpg');
+  width: 66px;
+  height: 66px;
+  border-radius: 33px;
+  position: absolute;
+  top: 18px;
+  left: 18px;
+  background-size: cover;
+  display: block;
+}
+.wrapper .main-box .headimg {
+  width: 55px;
+  height: 55px;
+  border-radius: 50%;
+  position: absolute;
+  top: 8px;
+  left: 18px;
+}
+.wrapper .main-box .lb_deptname {
+  position: absolute;
+  top: 35px;
+  left: 85px;
+  width: auto;
+  height: auto;
+  white-space: nowrap;
+  display: block;
+  color: #ccc;
+}
+.wrapper .main-box .lb_username {
+  position: absolute;
+  top: 10px;
+  left: 85px;
+  width: auto;
+  height: auto;
+}
+.wrapper .main-box .lb_operate {
+  position: absolute;
+  top: 60px;
+  left: 85px;
+  width: auto;
+  height: auto;
+}
+.wrapper .main-box .lb_operate .icon-signout {
+  color: #999;
+}
+.wrapper .main-box .lb_exit {
+  width: auto;
+  display: inline-block;
+  color: #666;
+}
+.wrapper.collapsed-left .left-box {
+  width: 60px !important;
+  transition: width 0.2s;
+}
+.wrapper.collapsed-left .left-box .logo .logo-img,
+.wrapper.collapsed-left .left-box .logo .default-logo,
+.wrapper.collapsed-left .left-box .logo .logo-name {
+  display: none;
+}
+.wrapper.collapsed-left .left-box .user-box {
+  height: 60px;
+}
+.wrapper.collapsed-left .left-box .user-box span {
+  display: none;
+}
+.wrapper.collapsed-left .left-box .user-box .headimg,
+.wrapper.collapsed-left .left-box .user-box .default-img {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  position: absolute;
+  top: 5px;
+  left: 2px;
+}
+.wrapper.collapsed-left .left-box .menu-box {
+  height: calc(100% - 120px);
+  overflow: visible;
+}
+.wrapper.collapsed-left .left-box .menu-box span {
+  display: none;
+}
+.wrapper.collapsed-left .left-box .menu-box ul > li {
+  position: relative;
+}
+.wrapper.collapsed-left .left-box .menu-box ul > li > ul {
+  display: none;
+}
+.wrapper.collapsed-left .left-box .menu-box ul > li:hover > ul {
+  display: block;
+  position: absolute;
+  left: 60px;
+  top: 0;
+  width: 190px;
+  background-color: #203756;
+}
+.wrapper.collapsed-left .left-box .menu-box ul > li:hover > ul > li {
+  list-style: none;
+}
+.wrapper.collapsed-left .left-box .menu-box ul > li:hover > ul > li > a {
+  padding-left: 20px;
+}
+.wrapper.collapsed-left .left-box .menu-box ul > li:hover > .nav-third-level {
+  left: 190px;
+}
+.wrapper.collapsed-left .left-box .menu-box .nav-first-level > li > a {
+  text-align: center;
+}
+.wrapper.collapsed-left .split-bar {
+  display: none;
+}
+.wrapper.collapsed-left .main-box {
+  margin-left: 60px !important;
+  transition: margin-left 0.2s;
+}
+.wrapper.collapsed-left .main-box .head-box {
+  display: none;
+}
+.wrapper.collapsed-left .main-box .menu-box .left-collapse {
+  display: block;
+}
+.wrapper.collapsed-left .main-box .menu-box .backward {
+  left: 30px;
+}
+.wrapper.collapsed-left .main-box .menu-box .tabs-skin {
+  padding-left: 60px !important;
+}
+.wrapper.collapsed-left .main-box .content-box {
+  height: calc(100% - 40px) !important;
+}
+.wrapper.collasped-main .main-box {
+  margin-left: 230px;
+}
+.wrapper.collasped-main .main-box .head-box {
+  display: none;
+}
+.wrapper.collasped-main .main-box .menu-box .left-collapse {
+  display: block;
+}
+.wrapper.collasped-main .main-box .menu-box .backward {
+  left: 30px;
+}
+.wrapper.collasped-main .main-box .menu-box .tabs-skin {
+  padding-left: 60px !important;
+}
+.wrapper.collasped-main .main-box .content-box {
+  height: calc(100% - 40px) !important;
+}

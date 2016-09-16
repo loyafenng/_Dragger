@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>autocomplete</title>
+		<link rel="stylesheet" href="http://js.40017.cn/cn/min/??/cn/public/jquery/autocomplete/0.0.1/autocomplete.css" />
+		<script type="text/javascript" src="js/jquery-1.8.3.js" ></script>
+		<script type="text/javascript" src="http://js.40017.cn/cn/min/??/cn/public/jquery/autocomplete/0.0.1/autocomplete.js"></script>
+	</head>
+	<body>
+		<input type="text" placeholder="城市名" id="leaveCityInput" maxlength="20">
+		<script type="text/javascript">
+			var  matchD = [{"match":["shanghai","上海"],"name":"上海","val":"上海名"},
+          	{"match":["ceshi","测试"],"name":"测试","val":"测试名"}];
+ 
+			$("#leaveCityInput").autoComplete({
+			    localData : matchD,
+			    highlight:true,
+			    width:220,
+			    max:10,
+			    itemValueFn: itemValueFn,
+			    itemPrintFn :itemPrintFn
+			});
+			//打印一条
+			function itemPrintFn(data){
+			    return "<div>"+ data.name+"</div>"
+			};
+			//选中一条时的值
+			function itemValueFn(data){
+			    return data.name;
+			}
+			
+			$("#leaveCityInput").autoComplete({
+			    highlight:true,
+			    width:220,
+			    max:10,
+			    ajaxObj:{
+			            url:'xxxxxxxxxx',
+			            dataType:"json",
+			            matchingName:'match',
+			            data:{
+			 
+			            },
+			            success:function(d){
+			                return d; //这里要处理数据和上面数据源数据格式一致
+			            }
+			    },
+			    itemValueFn: itemValueFn,
+			    itemPrintFn :itemPrintFn
+			});
+			//打印一条
+			function itemPrintFn(data){
+			    return "<div>"+ data.name+"</div>"
+			};
+			//选中一条时的值
+			function itemValueFn(data){
+			    return data.name;
+			}
+		</script>
+	</body>
+</html>

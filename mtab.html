@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>mTab</title>
+		<style type="text/css">
+html {color: #333; font: 12px/20px helvetica,Arial,sans-serif;}
+ul, li, h1, h2, h3, h4, h5 {margin: 0; padding: 0px;}
+li {list-style: none;}
+img {border: 0;}
+.none { display: none;}
+a:focus {outline: none;}
+.specialOffer { width: 680px; }
+.specialOffer h2 {padding: 2px 0 0 5px; background-color: #EEF8FF; border-bottom: 2px solid #1679DD; font: 16px/32px 'Microsoft YaHei',Arial,sans-serif; }
+.cities{ position: relative;}
+.cities h3 { font-weight: bold; position: absolute; margin: 5px 0 0 0;}
+/* 为标签设置样式 */
+.tab-bar-cities { height: 25px; padding-left: 260px; border-bottom: 1px solid #ddd;}
+.tab-bar-item-cities {float: left; width: 50px; height: 25px; position: relative; border-color: #ddd; border-style: solid; border-width: 0 1px; margin-right: -1px; }
+.tab-bar-item-cities a { position: absolute; width: 50px; background-color: #fff8f3; border-top: 1px solid #ddd; text-align: center; color: #005BB5; line-height: 24px;text-decoration: none;}
+.tab-bar-item-cities a:hover { color: #f60; text-decoration: underline;}
+.tab-bar-item-curr-cities a { background: #fff; border-top: 2px solid #90C7FD; color: #333; font-weight: bold; cursor: default;}
+.tab-bar-item-curr-cities a:hover { color: #333; text-decoration: none;}
+.cities .moreCities {position: absolute; top: 0; left: 583px; padding: 0 20px 0 5px; line-height: 24px; border: 1px solid #fff; border-bottom-color: #ddd; }
+.cities .moreCities .arrow { position: absolute; right: 5px; top: 9px; border-style: solid; border-color: #c3c3c3 #fff; line-height: 0px; border-width:5px 5px 0;}
+.cities .offerInfo {height: 150px; line-height: 150px;text-align: center;}
+</style>
+<script type="text/javascript" src="js/jquery-1.8.3.js" ></script>
+<script type="text/javascript" src="http://js.40017.cn/cn/min/??/cn/public/jquery/mTab/0.0.1/mTab.js"></script>
+	</head>
+	<body>
+		<div class="specialOffer">
+  <h2>最新特惠</h2>
+  <div style="border:1px solid #ddd; border-top: 0; padding: 15px 10px 0;">
+    <div id="hotelCities" class="cities">
+      <h3>酒店</h3>
+      <ul class="tab-bar-cities">
+        <!-- 为当前标签内容元素添加类名，类名为param.append属性值(这里为默认值"tab-bar-item-curr-cities") -->
+        <li class="tab-bar-item-cities tab-bar-item-curr-cities"><a href="javascript:void(0);" hidefocus="true">北京</a></li>
+        <li class="tab-bar-item-cities"><a href="javascript:void(0);" hidefocus="true">上海</a></li>
+        <li class="tab-bar-item-cities"><a href="javascript:void(0);" hidefocus="true">杭州</a></li>
+        <li class="tab-bar-item-cities"><a href="javascript:void(0);" hidefocus="true">广州</a></li>
+        <li class="tab-bar-item-cities"><a href="javascript:void(0);" hidefocus="true">南京</a></li>
+        <li class="tab-bar-item-cities"><a href="javascript:void(0);" hidefocus="true">苏州</a></li>
+      </ul>
+      <span class="moreCities">更多城市<span class="arrow"></span></span>
+      <div class="offerInfo">北京酒店最新特惠</div>
+      <div class="offerInfo none">上海酒店最新特惠</div>    <!-- 为非当前标签内容元素添加类名，类名为param.none属性值(这里为默认值"none")，后面的非当前标签内容也一样 -->
+      <div class="offerInfo none">杭州酒店最新特惠</div>
+      <div class="offerInfo none">广州酒店最新特惠</div>
+      <div class="offerInfo none">南京酒店最新特惠</div>
+      <div class="offerInfo none">苏州酒店最新特惠</div>
+    </div>
+  </div>
+</div>
+<script type="text/javascript">
+$("#hotelCities").mTab({
+    tab_tray: "ul",
+    append: "tab-bar-item-curr-cities",
+    content: ".offerInfo"
+})
+</script>
+	</body>
+</html>

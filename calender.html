@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>calender</title>
+		<link rel="stylesheet" href="http://js.40017.cn/cn/min/??/cn/public/jquery/calendar/0.0.3/calendar.css" />
+		<script type="text/javascript" src="js/jquery-1.8.3.js" ></script>
+		<script type="text/javascript" src="http://js.40017.cn/cn/min/??/cn/public/jquery/calendar/0.0.3/calendar.js"></script>
+	</head>
+	<body>
+		<input id="startTime" class="input" />
+		<input id="endTime" class="input" />
+		<script type="text/javascript">
+				
+			var cal = new $.Calendar();
+			var endDate = new Date();
+		    endDate.setMonth(endDate.getMonth() + 3);
+		    $("#startTime").on("focus", function(e) {
+		        cal.pick({
+		            elem: this,  // 如果设置了elem的值，且elem参数为input框
+		            startDate: new Date(),
+		            mode: "rangeFrom",
+		            endDate: endDate,
+		            currentDate: [new Date()]
+		        });
+		    });
+		    $("#endTime").on("focus", function(e) {
+		        var startDate = new Date($("#startTime").val());
+		        endDates = new Date(startDate);
+		        endDates.setMonth(endDates.getMonth() + 3);
+		        cal.pick({
+		            elem: this,  // 如果设置了elem的值，且elem参数为input框
+		            startDate: startDate,
+		            mode: "rangeFrom",
+		            endDate: endDates,
+		            currentDate: [startDate]
+		        });
+		    });
+		</script>
+	</body>
+</html>

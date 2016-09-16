@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		
+<div class="panel panel-default">
+	<div class="panel-heading" demo-id="c1">
+		 vue使用demo(点击查看代码)
+	</div>
+	<div class="panel-body">
+		<div class="row">
+			<div class="col-xs-4">
+
+				<label>下拉1</label>
+				<select v-model="selected">
+
+					
+					<!-- 对象字面量 -->
+					<option v-for="option in options" v-bind:value="option.text">
+					{{ option.text }} </option>
+				</select>
+			</div>
+			<div class="col-xs-4">
+
+				<label>下拉2</label>
+				<select v-model="selected2">
+
+					
+					<!-- 对象字面量 -->
+					<option v-for="option in options2" v-bind:value="option.value">
+					{{ option.text }} </option>
+				</select>
+			</div>
+			<div class="col-xs-4">
+
+				<label>一般文本</label>
+				<input type="text" v-model="textdemo" id="tbx_textdemo">
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-xs-4">
+
+				<label>下拉1</label>
+				<select id="ddlstate">
+				</select>
+
+				<input type="hidden" v-model="selected3" id="hdstate">
+			</div>
+			<div class="col-xs-4">
+
+				<label>性别</label>
+				<div class="radio">
+
+					<label>
+					<input type="radio" name="sex" v-model="sex" value="1">男 </label>
+					<label>
+					<input type="radio" name="sex" v-model="sex" value="0">女 </label>
+				</div>
+			</div>
+			<div class="col-xs-4">
+
+				<label>时间组件</label>
+				<input type="text" v-model="startdate" class="J_date">
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-xs-4">
+			</div>
+			<div class="col-xs-8 text-right">
+
+				<button type="button" class="btn btn-default" v-on:click="addrow()">新增行</button>
+				<button type="button" class="btn btn-default" v-on:click="search()">查询</button>
+			</div>
+		</div>
+	</div>
+	<div class="panel-body">
+		<table class="table" style="table-layout:fixed;">
+		<thead>
+		<tr>
+			<th>
+				列1
+			</th>
+			<th>
+				列1
+			</th>
+			<th>
+				列1
+			</th>
+			<th>
+				列1
+			</th>
+		</tr>
+		</thead>
+		<tbody>
+		<tr v-for="(index,item) in items">
+			<td>
+				<label>{{item.title}}</label><input type="text" v-model="item.title">s
+			</td>
+			<td>
+				<label>{{item.title}}</label><input type="text" v-model="item.title">s
+			</td>
+			<td>
+				<label>{{item.title}}</label><input type="text" v-model="item.title"> s
+			</td>
+			<td>
+
+				<a href="javascript:;" v-on:click="delrow(index)">删除</a>
+			</td>
+		</tr>
+		</tbody>
+		</table>
+	</div>
+	<div class="row">
+		<div class="col-xs-12 text-center">
+
+			<button type="button" class="btn btn-primary" v-on:click="getdata()">取值</button>
+		</div>
+	</div>
+</div>
+<script type="text/javascript">
+	require(["vue", "chosen/0.2.0/chosen", "datepicker/0.3.0/datepicker"], function (Vue, Chosen, Datepicker) {
+        window.form = new Vue({
+            el: ".form",
+            data: {
+                selected: "Three",
+                options: [
+                    { text: 'One' },
+                    { text: 'Two' },
+                    { text: 'Three' }
+                ],
+                selected2: "B",
+                selected3: "ddd",
+                options2: [
+                   { text: 'One', value: 'A' },
+                   { text: 'Two', value: 'B' },
+                   { text: 'Three', value: 'C' }
+                ],
+                textdemo: "",
+                sex: 1,
+                items: [
+                    { title: "1" },
+                    { title: "1" },
+                    { title: "1" }
+                ],
+                startdate:"2016-06-27"
+                ////异步数据
+                //asyndata: function () {
+                //    debugger
+                //    return ""
+                //}
+            },
+            methods: {
+                handle: function (str, e) {
+                    //$(e.target).parents("tr:first").toggleClass("show");
+                    //$(e.target).parents("tr:first").toggleClass("edit");
+                },
+                addrow: function () {
+                    this.$data.items.push({ title: "2" });
+                },
+                delrow: function (index) {
+                    this.$data.items.removeAt(index);
+                },
+                search: function () {
+                    alert("表单的所有数据:" + JSON.stringify(this.$data));
+                },
+                ddlchange: function () {
+                    console.log(2);
+                },
+                getdata: function () {
+                    var json = JSON.stringify(this.$data);
+                    alert(json);
+                    console.log(json);
+                }
+            }
+        });
+
+        var statedata = [{ "name": "北京", "value": "110000" },
+               { "name": "天津", "value": "120000" },
+               { "name": "河北省", "value": "130000" },
+               { "name": "sss", "value": "ddd" }
+        ];
+        var _chosen = new Chosen({
+            el: "#ddlstate",
+            defaultText: "--请选择州--",
+            data: statedata,
+            textField: 'name',
+            valueField: 'value',
+            valueEl: "#hdstate"
+        });
+
+        var dp = new Datepicker({
+            el: ".J_date",
+            format: 'yyyy-mm-dd',
+            minDate: "2016-06-20", //开始时间，在这时间之前都不可选
+            maxDate: "2016-06-25"//结束时间，在这时间之后都不可选           
+        });
+    });
+</script>
+	</body>
+</html>
